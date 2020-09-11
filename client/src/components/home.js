@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './home.css';
 
 export default function Home(){
     const [ result, setResult ] = useState();
@@ -32,7 +33,7 @@ export default function Home(){
     const renderTable = (result) => {
         if(Object.keys(result).length >= 1){
             return(
-                <div>
+                <div className='query-table'>
                     <table>
                         <thead>
                             <tr>
@@ -69,22 +70,24 @@ export default function Home(){
     };
 
     return(
-        <div>
-            <h1>PgAdmin | Node.js</h1>
-    
-            <form onSubmit={handleSubmit}>
-                <div className="form-input">
-                    <label>Your Query</label>
-                    <input type='text' onChange={e => setFlex(e.target.value) }/>
-                </div>
-                <button type="submit" className="btn-query">Enviar</button>
-            </form>
-            {
-                result &&
-                <div>
-                    {renderTable(result)}
-                </div>   
-            }
+        <div id="page">
+            <div className="card-content">
+                <h1>PgAdmin | Node.js</h1>
+        
+                <form onSubmit={handleSubmit}>
+                    <div className="form-input">
+                        <label>Your Query</label>
+                        <input type='text' onChange={e => setFlex(e.target.value) }/>
+                    </div>
+                    <button type="submit" className="btn-query">Enviar</button>
+                </form>
+                {
+                    result &&
+                    <div>
+                        {renderTable(result)}
+                    </div>   
+                }
+            </div>
         </div>
     )
 }
