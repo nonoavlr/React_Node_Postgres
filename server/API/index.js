@@ -27,8 +27,6 @@ router.post('/', async (req, res) => {
 
     if(query) {results = await DQL(query)}
 
-    console.log('server result: ', results);
-
     res.send({results})
 })
 
